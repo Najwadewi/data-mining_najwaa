@@ -111,12 +111,13 @@ else:
 
                     # Probabilitas
                     st.write("**📊 Probabilitas:**")
-                    col1, col2 = st.columns(2)
-with col1:
-    st.metric("Negatif", f"{prob_ensemble[0] * 100:.1f}%")
-with col2:
-    st.metric("Positif", f"{prob_ensemble[1] * 100:.1f}%")
-
+                    col1, col2, col3 = st.columns(3)
+                    with col1:
+                        st.metric("Negatif", f"{prob_ensemble[0] * 100:.1f}%")
+                    with col2:
+                        st.metric("Netral", f"{prob_ensemble[1] * 100:.1f}%")
+                    with col3:
+                        st.metric("Positif", f"{prob_ensemble[2] * 100:.1f}%")
 
                     # Tampilkan detail preprocessing
                     if show_details:
