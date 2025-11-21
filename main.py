@@ -48,9 +48,9 @@ st.markdown("### Ensemble Model (BernoulliNB + SVM)")
 models_loaded = all([model_bnb, model_svm, model_ensemble, vectorizer, tools])
 
 if not models_loaded:
-    st.error("⚠️ File model tidak ditemukan.")
+    st.error("⚠ File model tidak ditemukan.")
 else:
-    st.subheader("✍️ Masukkan Ulasan Film")
+    st.subheader("✍ Masukkan Ulasan Film")
 
     example_texts = [
         "Filmnya bagus banget, alurnya tidak ketebak!",
@@ -80,7 +80,7 @@ else:
 
     if predict_btn:
         if input_text.strip() == "":
-            st.warning("⚠️ Masukkan teks terlebih dahulu.")
+            st.warning("⚠ Masukkan teks terlebih dahulu.")
         else:
             with st.spinner('Menganalisis...'):
                 try:
@@ -107,10 +107,10 @@ else:
                     else:
                         st.error("### ❌ Sentimen: NEGATIF")
 
-                    st.info(f"**Tingkat Keyakinan:** {conf_text} ({max_prob:.1f}%)")
+                    st.info(f"*Tingkat Keyakinan:* {conf_text} ({max_prob:.1f}%)")
 
                     # Probabilitas
-                    st.write("**📊 Probabilitas:**")
+                    st.write("📊 Probabilitas:")
                     col1, col2, col3 = st.columns(3)
                     with col1:
                         st.metric("Negatif", f"{prob_ensemble[0] * 100:.1f}%")
@@ -127,9 +127,9 @@ else:
                     # Bandingkan model
                     if show_comparison:
                         st.subheader("📌 Perbandingan Prediksi Model")
-                        st.write(f"**BernoulliNB:** {pred_bnb}")
-                        st.write(f"**SVM:** {pred_svm}")
-                        st.write(f"**Ensemble:** {pred_ensemble}")
+                        st.write(f"*BernoulliNB:* {pred_bnb}")
+                        st.write(f"*SVM:* {pred_svm}")
+                        st.write(f"*Ensemble:* {pred_ensemble}")
 
                 except Exception as e:
                     st.error(f"❌ Terjadi error: {e}")
